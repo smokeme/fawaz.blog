@@ -4,12 +4,18 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { DiscussionEmbed } from "disqus-react"
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = (props) => {
+  const { data, location } = props
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
-
+  const disqusConfig = {
+    shortname: 'fawaz-blog',
+    config: { identifier: props.uri.substring(1), siteTitle},
+  }
+  
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -30,6 +36,7 @@ const BlogPostTemplate = ({ data, location }) => {
           itemProp="articleBody"
         />
         <hr />
+        <DiscussionEmbed {...disqusConfig} />
         <footer>
           <Bio />
         </footer>
