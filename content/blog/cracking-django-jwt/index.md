@@ -20,9 +20,9 @@ Some of you might have even used JWT or are currently using it
 
 So what does all of this have to do with `SECRET_KEY` ?
 
-Well as it happenes to create a JWT token you need some kind of a secret key `password` if you may say to generate this JWT token
+Well as it happens  to create a JWT token you need some kind of a secret key `password` if you may say to generate this JWT token
 
-And when it comes to Django, the go-to password for encryption opertations is the `SECRET_KEY`
+And when it comes to Django, the go-to password for encryption operations  is the `SECRET_KEY`
 
 ### Generate a JWT Token 
 
@@ -30,9 +30,9 @@ I've a Django project ready on a github repository that you can use to recreate 
 
 [Github](https://github.com/smokeme/weakjwt)
 
-After installing the `reqs.txt` requirments and running the server you can navigate to `http://localhost:8000/api/token/` to generate your token
+After installing the `reqs.txt` requirements and running the server you can navigate to `http://localhost:8000/api/token/` to generate your token
 
-I would recommend creating a superuser first by typing `python manage.py createsuperuser` then using those credintials to generate a token
+I would recommend creating a superuser first by typing `python manage.py createsuperuser` then using those credentials to generate a token
 
 ### Hashcat
 
@@ -79,13 +79,13 @@ Give it a few moments and it should crack the password!
 
 ### What does that mean?
 
-Well since you just cracked the JWT token you can realistcly generate new JWT tokens using that same `SECRET_KEY` and trick the website into authenticating you as another user!
+Well since you just cracked the JWT token you can realistically generate new JWT tokens using that same `SECRET_KEY` and trick the website into authenticating you as another user!
 
 You can take a look at information that this JWT holds by using something like [https://jwt.io](https://jwt.io) and pasting the JWT there, you can see that we have a `user_id` that we can change and have access to different users but we must have the same `SECRET_KEY` used first
 
 ### Thank you
 
-Thank you for reading this far hope you enjoyed it! 
+Thank you for reading this far. Hope you enjoyed it! 
 
 For any questions you can contact me via email at `Fawaz [at] hey [dot] com` or via Twitter at `@Q8fawazo`
 
