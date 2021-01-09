@@ -5,7 +5,7 @@ module.exports = {
       name: `Fawaz`,
       summary: `Full-stack developer and penetration tester.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Mostly CyberSecurity stuff.`,
     siteUrl: `https://fawaz.blog/`,
     social: {
       twitter: `q8fawazo`,
@@ -70,7 +70,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-dark-mode`
+    `gatsby-plugin-dark-mode`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
