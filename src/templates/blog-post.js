@@ -36,7 +36,7 @@ const BlogPostTemplate = (props) => {
           itemProp="articleBody"
         />
         <hr />
-        <DiscussionEmbed {...disqusConfig} />
+        
         <footer>
           <Bio />
         </footer>
