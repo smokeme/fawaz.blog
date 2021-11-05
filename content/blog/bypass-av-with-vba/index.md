@@ -99,7 +99,7 @@ Now I've seen this trick before being referenced to bypass EDR's and AV's when e
 
 You would just need to add `^` between characters and it would resolve it as a null value and ignore it apparently ? Am not particularly sure on the reason but it seems to work!
 
-So if we tried something like `net users` and `n^e^t use^er^s` both would result the same output but one is obfuscated while the other isn't (Must be ran within a command prompt)
+So if we tried something like `net users` and `n^e^t us^er^s` both would result the same output but one is obfuscated while the other isn't (Must be ran within a command prompt)
 
 So I adjusted my payload by a little bit and ended with something like this 
 
