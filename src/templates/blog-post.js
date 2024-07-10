@@ -16,8 +16,6 @@ const BlogPostTemplate = (props) => {
     config: { identifier: props.uri.substring(1), siteTitle},
   }
   
-  const trainings = data.allMarkdownRemark.nodes.filter(post => post.fields.slug.includes('/trainings/'))
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -69,39 +67,6 @@ const BlogPostTemplate = (props) => {
           </li>
         </ul>
       </nav>
-      <h2>Trainings</h2>
-      <ol style={{ listStyle: `none` }}>
-        {trainings.map(training => {
-          const title = training.frontmatter.title || training.fields.slug
-
-          return (
-            <li key={training.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={training.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{training.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: training.frontmatter.description || training.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
     </Layout>
   )
 }
@@ -143,19 +108,6 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
       }
     }
   }
