@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const trainings = data.allMarkdownRemark.nodes.filter(post => post.fields.slug.includes('/trainings/'))
 
   if (posts.length === 0) {
     return (
@@ -50,6 +51,39 @@ const BlogIndex = ({ data, location }) => {
                   <p
                     dangerouslySetInnerHTML={{
                       __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
+      </ol>
+      <h2>Trainings</h2>
+      <ol style={{ listStyle: `none` }}>
+        {trainings.map(training => {
+          const title = training.frontmatter.title || training.fields.slug
+
+          return (
+            <li key={training.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <header>
+                  <h2>
+                    <Link to={training.fields.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+                  <small>{training.frontmatter.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: training.frontmatter.description || training.excerpt,
                     }}
                     itemProp="description"
                   />
