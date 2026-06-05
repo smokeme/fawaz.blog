@@ -1,6 +1,7 @@
 ---
 title: Trainings
-description: Trainings provided for red teaming and penetration testing
+date: 2025-01-01
+description: Cybersecurity training courses and educational experience
 ---
 
 ## Available Trainings

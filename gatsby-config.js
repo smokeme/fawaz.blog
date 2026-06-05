@@ -22,15 +22,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
+        path: `${__dirname}/content/trainings`,
+        name: `trainings`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog/trainings`,
-        name: `trainings`,
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
       },
     },
     {
@@ -67,19 +67,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Fawaz's Blog`,
+        short_name: `Fawaz`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#0891b2`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-dark-mode`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

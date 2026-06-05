@@ -7,10 +7,11 @@ import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
-  const trainings = data.allMarkdownRemark.nodes.filter(post => post.fields.slug.includes('/trainings/'))
+  const allPosts = data.allMarkdownRemark.nodes
+  const trainings = allPosts.filter(post => post.fields.slug.includes('/trainings/'))
+  const posts = allPosts.filter(post => !post.fields.slug.includes('/trainings/'))
 
-  if (posts.length === 0) {
+  if (posts.length === 0 && trainings.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" />
@@ -28,9 +29,13 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <section className="section-divider">
+        <h2 className="section-title">Latest Posts</h2>
+      </section>
+      <ol className="post-list">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
+          const tags = post.frontmatter.tags || []
 
           return (
             <li key={post.fields.slug}>
@@ -60,39 +65,28 @@ const BlogIndex = ({ data, location }) => {
           )
         })}
       </ol>
-      <h2>Trainings</h2>
-      <ol style={{ listStyle: `none` }}>
-        {trainings.map(training => {
-          const title = training.frontmatter.title || training.fields.slug
-
-          return (
-            <li key={training.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={training.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{training.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: training.frontmatter.description || training.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
+      {trainings.length > 0 && (
+        <>
+          <section className="section-divider">
+            <h2 className="section-title">Training</h2>
+          </section>
+          <div className="training-card">
+            {trainings.map(training => {
+              const title = training.frontmatter.title || training.fields.slug
+              return (
+                <Link to={training.fields.slug} key={training.fields.slug} className="training-link">
+                  <span className="training-icon">&#x1F393;</span>
+                  <div>
+                    <strong>{title}</strong>
+                    <p>{training.frontmatter.description}</p>
+                  </div>
+                  <span className="training-arrow">&rarr;</span>
+                </Link>
+              )
+            })}
+          </div>
+        </>
+      )}
     </Layout>
   )
 }
